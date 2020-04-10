@@ -1,3 +1,12 @@
-lane :test do
-  xcodebuild_analyze
+project = "ExampleApp/ExampleApp.xcodeproj"
+
+lane :analyze do
+  xcodebuild_analyze(
+    project: project,
+    scheme: "ExampleApp",
+    sdk: "iphonesimulator",
+    output: "plist-html",
+    output_dir: "tmp",
+    static_analyzer: true
+  )
 end
