@@ -10,3 +10,13 @@ lane :analyze do
     static_analyzer: true
   )
 end
+
+lane :test do
+  xcodebuild_analyze_ensure_no_results(
+    project: project,
+    scheme: "ExampleApp",
+    sdk: "iphonesimulator",
+    static_analyzer: true,
+    prune_output: true
+  )
+end

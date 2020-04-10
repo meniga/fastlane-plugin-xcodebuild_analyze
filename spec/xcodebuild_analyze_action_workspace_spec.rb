@@ -7,24 +7,18 @@ describe Fastlane::Actions::XcodebuildAnalyzeAction do
     end
 
     it 'when workspace and project provided' do
-      Fastlane::FastFile.new.parse("lane :test do
-        xcodebuild_analyze(workspace: 'Meniga.xcworkspace', project: 'Meniga.xcodeproj', scheme: 'Meniga')
-      end").runner.execute(:test)
+      ActionRunner.xcodebuild_analyze("workspace: 'Meniga.xcworkspace', project: 'Meniga.xcodeproj', scheme: 'Meniga'")
     end
 
     it 'when workspace provided and project not provided' do
-      Fastlane::FastFile.new.parse("lane :test do
-        xcodebuild_analyze(workspace: 'Meniga.xcworkspace', scheme: 'Meniga')
-      end").runner.execute(:test)
+      ActionRunner.xcodebuild_analyze("workspace: 'Meniga.xcworkspace', scheme: 'Meniga'")
     end
 
     it 'when workspace not provided and xcworkspace is in current directory' do
       xcworkspace = "fastlane/Meniga.xcworkspace"
       File.new(xcworkspace, "w")
 
-      Fastlane::FastFile.new.parse("lane :test do
-        xcodebuild_analyze(scheme: 'Meniga')
-      end").runner.execute(:test)
+      ActionRunner.xcodebuild_analyze("scheme: 'Meniga'")
 
       File.delete(xcworkspace)
     end
@@ -33,9 +27,7 @@ describe Fastlane::Actions::XcodebuildAnalyzeAction do
       xcworkspace = "fastlane/Wrapp.xcworkspace"
       File.new(xcworkspace, "w")
 
-      Fastlane::FastFile.new.parse("lane :test do
-          xcodebuild_analyze(workspace: 'Meniga.xcworkspace', scheme: 'Meniga')
-      end").runner.execute(:test)
+      ActionRunner.xcodebuild_analyze("workspace: 'Meniga.xcworkspace', scheme: 'Meniga'")
 
       File.delete(xcworkspace)
     end
