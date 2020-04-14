@@ -1,6 +1,8 @@
 # xcodebuild_analyze plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-xcodebuild_analyze)
+[![Build Status](https://travis-ci.org/meniga/menigit.svg?branch=master)](https://github.com/meniga/fastlane-plugin-xcodebuild_analyze)
+[![codecov](https://codecov.io/gh/meniga/menigit/branch/master/graph/badge.svg)](https://codecov.io/gh/meniga/fastlane-plugin-xcodebuild_analyze)
 
 ## Getting Started
 
@@ -14,13 +16,9 @@ fastlane add_plugin xcodebuild_analyze
 
 Run code analyzer using xcodebuild
 
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
-
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane analyze` or `bundle exec fastlane test`.
 
 ## Run tests for this plugin
 

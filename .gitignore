@@ -10,3 +10,6 @@ fastlane/README.md
 fastlane/report.xml
 coverage
 test-results
+ExampleApp/ExampleApp.xcodeproj/project.xcworkspace/xcuserdata
+ExampleApp/ExampleApp.xcodeproj/xcuserdata
+ExampleApp/tmp
