@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'mobile.dev@meniga.com'
 
   spec.summary       = 'Run code analyzer using xcodebuild'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-xcodebuild_analyze"
+  spec.homepage      = "https://github.com/meniga/fastlane-plugin-xcodebuild_analyze"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
