@@ -6,7 +6,11 @@ module Fastlane
     class XcodebuildAnalyzeAction < Action
       def self.run(params)
         configuration = Helper::XcodebuildAnalyzeHelper.parse_configuration(params)
-        Helper::XcodebuildAnalyzeHelper.run_analyzer(configuration)
+        Helper::XcodebuildAnalyzeHelper.run_analyzer(configuration, other_action)
+      end
+
+      def self.category
+        :building
       end
 
       def self.description
@@ -39,7 +43,7 @@ module Fastlane
             type: String),
           FastlaneCore::ConfigItem.new(key: :project,
             env_name: "XCODEBUILD_ANALYZE_PROJECT",
-            description: "Project (.xcodeproj) file to use to analyze app (automatically detected in current directory, overridden by --workspace option, if passed)",
+            description: "Project (.xcodeproj) file to use to analyze app (overridden by --workspace option, if passed)",
             optional: true,
             type: String),
           FastlaneCore::ConfigItem.new(key: :configuration,
