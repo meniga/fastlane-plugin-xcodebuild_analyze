@@ -5,9 +5,17 @@ describe Fastlane::Actions::XcodebuildAnalyzeEnsureNoResultsAction do
       expect(Fastlane::UI)
         .to receive(:success)
         .with("Driving the lane 'test' 🚀")
-      expect(Fastlane::Actions)
-        .to receive(:sh)
-        .with("xcodebuild -project Meniga.xcodeproj -scheme Meniga CLANG_ANALYZER_OTHER_FLAGS= CLANG_ANALYZER_OUTPUT=html CLANG_ANALYZER_OUTPUT_DIR=analyze_results analyze")
+
+      expect(Fastlane::Actions::XcodebuildAction)
+        .to receive(:run)
+        .with(
+          workspace: nil,
+          project: "../Meniga.xcodeproj",
+          scheme: "Meniga",
+          sdk: nil,
+          analyze: true,
+          xcargs: "CLANG_ANALYZER_OTHER_FLAGS= CLANG_ANALYZER_OUTPUT=html CLANG_ANALYZER_OUTPUT_DIR=analyze_results"
+        )
     end
 
     after(:each) do

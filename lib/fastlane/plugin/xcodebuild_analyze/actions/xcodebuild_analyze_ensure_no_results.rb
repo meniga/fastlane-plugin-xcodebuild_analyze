@@ -7,7 +7,7 @@ module Fastlane
       def self.run(params)
         configuration = Helper::XcodebuildAnalyzeHelper.parse_configuration(params)
         configuration.output = "html"
-        Helper::XcodebuildAnalyzeHelper.run_analyzer(configuration)
+        Helper::XcodebuildAnalyzeHelper.run_analyzer(configuration, other_action)
         input_path = configuration.workspace ? configuration.workspace : configuration.project
         path = "#{File.dirname(input_path)}/#{configuration.output_dir}"
         results = Dir["#{path}/**/**.html"]
@@ -17,6 +17,10 @@ module Fastlane
         else
           UI.user_error!("Analyzer found vulnerabilities in #{results.count} file(s)!")
         end
+      end
+
+      def self.category
+        :building
       end
 
       def self.description
@@ -50,7 +54,7 @@ module Fastlane
             type: String),
           FastlaneCore::ConfigItem.new(key: :project,
             env_name: "XCODEBUILD_ANALYZE_ENSURE_NO_RESULTS_PROJECT",
-            description: "Project (.xcodeproj) file to use to analyze app (automatically detected in current directory, overridden by --workspace option, if passed)",
+            description: "Project (.xcodeproj) file to use to analyze app (overridden by --workspace option, if passed)",
             optional: true,
             type: String),
           FastlaneCore::ConfigItem.new(key: :configuration,

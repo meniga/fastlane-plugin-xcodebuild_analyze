@@ -13,17 +13,31 @@ describe Fastlane::Actions::XcodebuildAnalyzeEnsureNoResultsAction do
     end
 
     it 'should failed when html file created under results path in project directory' do
-      expect(Fastlane::Actions)
-        .to receive(:sh)
-        .with("xcodebuild -project ExampleApp/Meniga.xcodeproj -scheme Meniga CLANG_ANALYZER_OTHER_FLAGS= CLANG_ANALYZER_OUTPUT=html CLANG_ANALYZER_OUTPUT_DIR=analyze_results analyze")
+      expect(Fastlane::Actions::XcodebuildAction)
+        .to receive(:run)
+        .with(
+          workspace: nil,
+          project: "../ExampleApp/Meniga.xcodeproj",
+          scheme: "Meniga",
+          sdk: nil,
+          analyze: true,
+          xcargs: "CLANG_ANALYZER_OTHER_FLAGS= CLANG_ANALYZER_OUTPUT=html CLANG_ANALYZER_OUTPUT_DIR=analyze_results"
+        )
 
       ActionRunner.xcodebuild_analyze_ensure_no_results("project: 'ExampleApp/Meniga.xcodeproj', scheme: 'Meniga'")
     end
 
     it 'should failed when html file created under results path in workspace directory' do
-      expect(Fastlane::Actions)
-        .to receive(:sh)
-        .with("xcodebuild -workspace ExampleApp/Meniga.xcworkspace -scheme Meniga CLANG_ANALYZER_OTHER_FLAGS= CLANG_ANALYZER_OUTPUT=html CLANG_ANALYZER_OUTPUT_DIR=analyze_results analyze")
+      expect(Fastlane::Actions::XcodebuildAction)
+        .to receive(:run)
+        .with(
+          project: nil,
+          workspace: "../ExampleApp/Meniga.xcworkspace",
+          scheme: "Meniga",
+          sdk: nil,
+          analyze: true,
+          xcargs: "CLANG_ANALYZER_OTHER_FLAGS= CLANG_ANALYZER_OUTPUT=html CLANG_ANALYZER_OUTPUT_DIR=analyze_results"
+        )
 
       ActionRunner.xcodebuild_analyze_ensure_no_results("workspace: 'ExampleApp/Meniga.xcworkspace', scheme: 'Meniga'")
     end
