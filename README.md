@@ -1,8 +1,8 @@
 # xcodebuild_analyze plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-xcodebuild_analyze)
-[![Build Status](https://travis-ci.org/meniga/menigit.svg?branch=master)](https://github.com/meniga/fastlane-plugin-xcodebuild_analyze)
-[![codecov](https://codecov.io/gh/meniga/menigit/branch/master/graph/badge.svg)](https://codecov.io/gh/meniga/fastlane-plugin-xcodebuild_analyze)
+[![Build Status](https://travis-ci.org/meniga/fastlane-plugin-xcodebuild_analyze.svg?branch=master)](https://travis-ci.org/meniga/fastlane-plugin-xcodebuild_analyze)
+[![codecov](https://codecov.io/gh/meniga/fastlane-plugin-xcodebuild_analyze/branch/master/graph/badge.svg)](https://codecov.io/gh/meniga/fastlane-plugin-xcodebuild_analyze)
 
 ## Getting Started
 
