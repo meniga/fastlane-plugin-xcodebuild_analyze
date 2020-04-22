@@ -3,8 +3,12 @@ module ActionRunner
     run_action("xcodebuild_analyze", string_params)
   end
 
-  def self.xcodebuild_analyze_ensure_no_results(string_params)
-    run_action("xcodebuild_analyze_ensure_no_results", string_params)
+  def self.xcodebuild_analyze_and_ensure_no_results(string_params)
+    run_action("xcodebuild_analyze_and_ensure_no_results", string_params)
+  end
+
+  def self.ensure_no_results_from_xcodebuild_analyze(string_params)
+    run_action("ensure_no_results_from_xcodebuild_analyze", string_params)
   end
 
   def self.run_action(name, string_params)

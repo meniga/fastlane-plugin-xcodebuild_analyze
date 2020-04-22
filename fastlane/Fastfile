@@ -1,22 +1,41 @@
 project = "ExampleApp/ExampleApp.xcodeproj"
+scheme = "ExampleApp"
+sdk = "iphonesimulator"
 
 lane :analyze do
   xcodebuild_analyze(
     project: project,
-    scheme: "ExampleApp",
-    sdk: "iphonesimulator",
+    scheme: scheme,
+    sdk: sdk,
     output: "plist-html",
     output_dir: "tmp",
     static_analyzer: true
   )
 end
 
-lane :test do
-  xcodebuild_analyze_ensure_no_results(
+lane :analyze_and_check do
+  xcodebuild_analyze_and_ensure_no_results(
     project: project,
-    scheme: "ExampleApp",
-    sdk: "iphonesimulator",
+    scheme: scheme,
+    sdk: sdk,
     static_analyzer: true,
     prune_output: true
+  )
+end
+
+lane :test do
+  xcodebuild(
+    project: project,
+    scheme: scheme,
+    sdk: sdk,
+    destination: "name=iPhone 8",
+    clean: true,
+    analyze: true,
+    test: true,
+    xcargs: "CLANG_ANALYZER_OTHER_FLAGS= CLANG_ANALYZER_OUTPUT=html CLANG_ANALYZER_OUTPUT_DIR=analyze_results RUN_CLANG_STATIC_ANALYZER=YES"
+  )
+  ensure_no_results_from_xcodebuild_analyze(
+    path: "ExampleApp/analyze_results",
+    prune: true
   )
 end

@@ -18,7 +18,7 @@ Run code analyzer using xcodebuild
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane analyze` or `bundle exec fastlane test`.
+Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and check available lanes in `Fastfile`.
 
 ## Run tests for this plugin
 
